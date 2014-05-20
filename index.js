@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
 
 var items = require('./controllers/items');
@@ -10,7 +11,7 @@ var items = require('./controllers/items');
 
 app.use(express.static('./public'));
 
-app.use(express.bodyParser());
+app.use(bodyParser());
 
 app.get('/items', items.list);
 
