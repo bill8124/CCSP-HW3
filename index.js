@@ -9,6 +9,8 @@ var items = require('./controllers/items');
  * 會先從此資料夾底下開始找（所以我們把index.html放在這底下）
  */
 
+app.set('port', process.env.PORT || 5000);
+
 app.use(express.static('./public'));
 
 app.use(bodyParser());
@@ -23,4 +25,4 @@ app.put('/items/:id/reposition/:new_position', items.reposition);
 
 app.delete('/items/:id', items.delete);
 
-app.listen(5000, function(){ console.log('Express server started at port 5000'); });
+app.listen(app.get('port'), function(){ console.log('Express server started at port ' + app.get('port')); });
